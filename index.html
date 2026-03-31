@@ -19,12 +19,14 @@
         </nav>
         </header>
     -->
-		<nav class="nav-menu"> <!-- dodati obilježja za ARIA-->
-			<ul> <!-- dodati da je navigacija lijevo poravnata i da je skrivena		
-				LV1: bez upotrebe javascripta -->
-				<li><a class="mobile-hide" href="index.html">Home</a></li>
-				<li><a class="mobile-hide" href="chart.html">Chart</a></li>
-				<li><a class="mobile-hide" href="slike.html">Gallery</a></li>
+		<nav class="nav-menu">
+			<input type="checkbox" id="menu-toggle">
+			<label for="menu-toggle" class="menu-icon" aria-label="Toggle menu">☰</label>
+			 <!-- dodati obilježja za ARIA-->
+			<ul class="menu">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="chart.html">Chart</a></li>
+				<li><a href="slike.html">Gallery</a></li>
 			</ul>
 		</nav>
 
@@ -47,22 +49,27 @@
 				<tr><td>TRVCCWR128F9304A30</td><td>Viva la Vida</td><td>Coldplay</td><td>Rock, Pop</td><td>2013</td><td>235384</td><td>0.806</td></tr>
 				<tr><td>TRUENYK128F4274057</td><td>Chop Suey!</td><td>System of a Down</td><td>Metal</td><td>2008</td><td>232680</td><td>0.925</td></tr>
 				<tr><td>TROCLWN128F92EB284</td><td>Fluorescent Adolescent</td><td>Arctic Monkeys</td><td>Pop</td><td>2007</td><td>177534</td><td>0.818</td></tr>
-				<tr><td>TROCLWN128F92EB284</td><td>Fluorescent Adolescent</td><td>Arctic Monkeys</td><td>Pop</td><td>2007</td><td>177534</td><td>0.818</td></tr>
 			</table>
 			<aside class="imageHomePage">
-				<img class="desktop-img" src="https://cdn.pixabay.com/photo/2022/07/10/01/47/grades-7312021_1280.jpg" alt="Music sheet">
-				<img class="mobile-img" src="https://cdn.pixabay.com/photo/2023/02/07/21/25/violin-7775182_1280.jpg" alt="Violin and music sheet">
+				<!--<img src="https://cdn.pixabay.com/photo/2022/07/10/01/47/grades-7312021_1280.jpg" alt="Music sheet" class="desktop-img">
+				<img src="https://cdn.pixabay.com/photo/2023/02/07/21/25/violin-7775182_1280.jpg" alt="Violin and music sheet" class="mobile-img">-->
+
+				<picture>
+					<source media="(max-width: 768px)" srcset="https://cdn.pixabay.com/photo/2023/02/07/21/25/violin-7775182_1280.jpg">
+					<img src="https://cdn.pixabay.com/photo/2022/07/10/01/47/grades-7312021_1280.jpg" alt="Music sheet">
+				</picture>
+
 			</aside>
 		</div>
 
 		<section class="content"> <!-- dodati neke od obilježja za ARIA-->
-			<h2>Ovo je glavna sekcija</h2>
-			<p>HTML5 omogucava semanticku strukturu koja poboljsava pristupacnost i SEO.</p>
+			<h2>Music info</h2>
+			<p>Table shows a few of the most popular songs and their characteristics.</p>
 		</section>
 		 <!-- dodati jedan aside na desnoj strani s ugrađenom google mapom/filmom ili slično-->
 		<article>
-			<h2>Najnovije vijesti</h2>
-			<p>Ovdje se nalazi clanak s vaznim informacijama.</p>
+			<h2>News</h2>
+			<p>Artists like The Killers, Arctic Monkeys and Coldplay continue to influence modern rock and pop genres.</p>
 		</article>
 		
 

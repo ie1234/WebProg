@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<header>
-		<h1>Music Info</h1>
+		<h1>Music Stats</h1>
 		</header>
 		<!-- <header>
        <nav aria-labelledby="primarna-navigacija">
@@ -20,19 +20,21 @@
         </nav>
         </header>
     -->
-		<nav class="nav-menu"> <!-- dodati obilježja za ARIA-->
-			<ul> <!-- dodati da je navigacija lijevo poravnata i da je skrivena		
-				LV1: bez upotrebe javascripta -->
-				<li><a class="mobile-hide" href="index_predlozak.html">Home</a></li>
-				<li><a class="mobile-hide" href="chart.html">Chart</a></li>
-				<li><a class="mobile-hide" href="slike.html">Gallery</a></li>
+		<nav class="nav-menu">
+			<input type="checkbox" id="menu-toggle">
+			<label for="menu-toggle" class="menu-icon" aria-label="Toggle menu">☰</label>
+			 <!-- dodati obilježja za ARIA-->
+			<ul class="menu">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="chart.html">Chart</a></li>
+				<li><a href="slike.html">Gallery</a></li>
 			</ul>
 		</nav>
 
 
-		<h1>Music Info</h1>
+		<h1>Music Stats</h1>
 
-		<table class="musicTab">
+		<!--<table class="musicTab">
 			<tr>
 				<th>Track ID</th>
 				<th>Name</th>
@@ -48,18 +50,27 @@
 			<tr><td>TRVCCWR128F9304A30</td><td>Viva la Vida</td><td>Coldplay</td><td>Rock, Pop</td><td>2013</td><td>235384</td><td>0.806</td></tr>
 			<tr><td>TRUENYK128F4274057</td><td>Chop Suey!</td><td>System of a Down</td><td>Metal</td><td>2008</td><td>232680</td><td>0.925</td></tr>
 			<tr><td>TROCLWN128F92EB284</td><td>Fluorescent Adolescent</td><td>Arctic Monkeys</td><td>Pop</td><td>2007</td><td>177534</td><td>0.818</td></tr>
-			<tr><td>TROCLWN128F92EB284</td><td>Fluorescent Adolescent</td><td>Arctic Monkeys</td><td>Pop</td><td>2007</td><td>177534</td><td>0.818</td></tr>
-		</table>
-
+		</table>-->	
+		<div class="chart-container">
+			<div class="pie-chart-wrapper">
+				<div class="pie-chart" style="--rock: 57%; --pop: 29%; --metal: 14%;">
+					<div class="chart-label">Music Genres</div>
+				</div>
+				
+				<div class="legend">
+					<div class="legend-item"><span class="dot rock"></span> Rock (57%)</div>
+					<div class="legend-item"><span class="dot pop"></span> Pop (29%)</div>
+					<div class="legend-item"><span class="dot metal"></span> Metal (14%)</div>
+				</div>
+			</div>
+		</div>
 
 		<section class="content"> <!-- dodati neke od obilježja za ARIA-->
-			<h2>Ovo je glavna sekcija</h2>
-			<p>HTML5 omogucava semanticku strukturu koja poboljsava pristupacnost i SEO.</p>
+			<p>This graph shows genre distribution </p>
 		</section>
 		 <!-- dodati jedan aside na desnoj strani s ugrađenom google mapom/filmom ili slično-->
 		<article>
-			<h2>Najnovije vijesti</h2>
-			<p>Ovdje se nalazi clanak s vaznim informacijama.</p>
+			
 		</article>
 		
 

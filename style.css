@@ -14,39 +14,43 @@ header {
     padding: 20px;
 }
 
-.nav-menu {
+/*MENI*/
+#menu-toggle{
+    display: none;
+}
+.menu-icon{
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 10px;
+}
+.menu{
     display: flex;
     justify-content: center;
     list-style: none;
+    gap: 20px;
     padding: 0;
-    margin: 0;
 }
-
-.nav-menu li {
-    margin: 0 15px;
-    list-style-type: none;
-    float:left;
-}
-
-.nav-menu a {
-    display: block;
+.menu a{
     text-decoration: none;
     color: black;
     font-weight: bold;
+    transition: 0.3s;
 }
-.nav-menu a:hover{
-    color:gray;
+.menu a:hover{
+    color:#555353;
 }
 
 .Img-and-Table{
     display: flex;
+    /*flex-direction: row;*/
     align-items: flex-start;
     gap: 20px;
     padding: 20px;
 }
 
 .imageHomePage{
-    flex: 0 0 300px;
+    flex: 1;
     margin-left: 50px;
     text-align: center;
 }
@@ -55,6 +59,9 @@ header {
     width: 100%;
     display: block;
     border-radius: 10px;
+}
+.imageHomePage:hover{
+    transform: scale(0.9);
 }
 
 .musicTab table, th, td{
@@ -66,9 +73,21 @@ header {
     padding: 10px;
 }
 .musicTab{
+    flex: 2;
+    border-collapse: collapse;
+    overflow-x: auto;
+    width: 100%;
     display: table;
 }
-.img-mobile {
+
+.desktop-img{
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+.mobile-img{
     display: none;
 }
 
@@ -93,16 +112,84 @@ header {
 }
 
 /* Kružni grafikon - CSS samo */
+:root {
+    --bg-chart: #ffffff;
+    --color-rock: #3498db;  /* Plava */
+    --color-pop: #2ecc71;   /* Zelena */
+    --color-metal: #e74c3c; /* Crvena */
+    --chart-size: 300px;
+    --transition-speed: 0.5s;
+}
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+.pie-chart-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin: 30px 0;
+}
 .pie-chart {
-    width: 150px;
-    height: 150px;
+    width: var(--chart-size);
+    height: var(--chart-size);
     border-radius: 50%;
+    
     background: conic-gradient(
-        #3498db 0% 40%,  /* Industrija */
-        #2ecc71 40% 75%,  /* Kućanstva */
-        #f1c40f 75% 100%  /* Transport */
+        var(--color-rock) 0% var(--rock),
+        var(--color-pop) var(--rock) calc(var(--rock) + var(--pop)),
+        var(--color-metal) calc(var(--rock) + var(--pop)) 100%
     );
-    margin: 0 auto;
+    
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    animation: fadeInScale 1.2s ease-out forwards;
+    transition: transform var(--transition-speed);
+}
+.chart-label {
+    position: relative;
+    z-index: 2;
+    font-weight: bold;
+    color: #333;
+}
+
+.legend {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+}
+
+.dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+}
+
+.rock { background-color: var(--color-rock); }
+.pop { background-color: var(--color-pop); }
+.metal { background-color: var(--color-metal); }
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.5) rotate(-30deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
 }
 
 /* Flexbox analiza sekcija */
@@ -161,26 +248,42 @@ footer {
 
 /* Responzivnost */
 @media (max-width: 768px) {
-    .data-container {
-        flex-direction: column;
-        align-items: center;
+    .menu-icon {
+        display: block;
     }
 
-    .analysis-flex {
+    .menu {
+        display: none;
         flex-direction: column;
-        align-items: center;
-    }
-
-    .nav-menu {
-        flex-direction: column;
+        width: 100%;
+        background: #222;
         text-align: center;
+    }
+
+    .menu li {
+        padding: 10px 0;
+    }
+
+    .menu a {
+        color: white;
+    }
+
+    /* ključ */
+    #menu-toggle:checked + .menu-icon + .menu {
+        display: flex;
+    }
+
+    .data-container, .analysis-box, .nav-menu, .Img-and-Table {
+        flex-direction: column;
+        align-items: center;
     }
 
     .form-flex input, .form-flex button {
         width: 100%;
     }
+
     .Img-and-Table{
-        flex-direction: column;
+        gap: 20px;
     }
     .musicTab{
         min-width: 100%;
@@ -190,17 +293,22 @@ footer {
     .imageHomePage img{
         max-width: 400px;
     }
-    .img-desktop{
+    .desktop-img{
         display: none;
     }
-    .img-mobile{
+    .mobile-img{
         display: block;
         width: 100%;
         height: auto;
+        border-radius: 8px;
     }
-}
-@media(max-width: 640px){
-    .mobile-hide{
-        display: none;
+
+    .pie-chart-wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    :root {
+        --chart-size: 200px;
     }
 }
